@@ -1,0 +1,58 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Better defaults */
+:root { color-scheme: dark; }
+* { -webkit-tap-highlight-color: transparent; }
+html { scroll-behavior: smooth; }
+
+/* Subtle noise */
+.bg-noise {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23n)' opacity='.18'/%3E%3C/svg%3E");
+}
+
+/* Fancy focus */
+:focus-visible { outline: 2px solid rgba(34, 211, 238, .7); outline-offset: 2px; }
+
+/* Selection */
+::selection { background: rgba(167, 139, 250, .35); }
+
+/* Custom scrollbar (webkit) */
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, rgba(34,211,238,.35), rgba(167,139,250,.35), rgba(251,113,133,.35));
+  border-radius: 999px;
+}
+::-webkit-scrollbar-track { background: rgba(255,255,255,.03); }
+
+/* Utility: glass */
+.glass {
+  background: rgba(255,255,255,.05);
+  border: 1px solid rgba(255,255,255,.08);
+  backdrop-filter: blur(14px);
+}
+
+/* Gradient border wrapper */
+.grad-border {
+  position: relative;
+}
+.grad-border::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, rgba(34,211,238,.75), rgba(167,139,250,.75), rgba(251,113,133,.75));
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+/* Soft glowing background blobs */
+.blob {
+  filter: blur(40px);
+  opacity: .55;
+  transform: translateZ(0);
+}
